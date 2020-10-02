@@ -167,4 +167,4 @@ client.on('message', message => {
 
 
 
-client.login('NzU4NDI0NDU3NzgxMzEzNTQw.X2uv0Q.dScaGAefwZ9KB70MrsnzpExBps0');
+client.login('Token');
