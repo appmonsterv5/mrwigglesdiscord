@@ -6,6 +6,7 @@ const cooldowns = new Discord.Collection();
 
 
 
+
 const prefix = 'mr';
 
 client.once('ready', () => {
@@ -37,7 +38,7 @@ client.on('message', message => {
             .setTitle(`Hey, ${message.author.username} We are here to help`)
             .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
             .setColor('7982DA')
-            .setDescription('Hi, Thanks for being intrested in Mr.Wiggles. **ALL** commands start with: mr\n\n\n✅  Useful\n`avatar`\n\n❌ Not useful\n`owo`\n\n⚙️ Server admins\n`None Here yet`\n\nFor more help click [here](https://docs.mrwiggles.cf/)')
+            .setDescription('Hi, Thanks for being intrested in Mr.Wiggles. **ALL** commands start with: mr\n\n\n✅  Useful\n`avatar`\n\n❌ Not useful\n`owo`\n\n⚙️ Server admins\n`None Here yet`\n\n🚿 Form The creators\n`technews` `contribute`\n\nFor more help click [here](https://docs.mrwiggles.cf/)\n\n\n\n[Click Here to invite!](https://discord.com/api/oauth2/authorize?client_id=758424457781313540&permissions=1812462673&scope=bot)')
             .setFooter(`Reqested by: ${message.author.username}`, message.author.displayAvatarURL())
             .setTimestamp()
             if(!args[1]){
@@ -74,35 +75,23 @@ client.on('message', message => {
 
 
         case "owo":
-            message.channel.send('Sorry OWO PUPPY is dead. I was the imposter')
+            message.channel.send('Sorry OWO PUPPY is dead. I was the imposter').then(sentMessage =>{
+                const channel = client.channels.cache.get('761348067810213908')
+                channel.send(`${message.author.tag} Ran the command owo!`)
+            })
             break;
 
 
 
 
-        case "news":           
-        const Embed = new Discord.MessageEmbed()
-            .setColor('0xFFC300')
-            .setImage('https://cdn.discordapp.com/attachments/711640811074486372/744511779614490664/tenor.gif')
-            .setTitle('Looks like you need some help! We are here to help')
-            .setDescription('News Command: `mrnews [news]`')
-            .setFooter('Sent By our dev team @ SeanLovesBlobs Develpomet')
-            
+        
+        
 
 
-            if(!args[1]){
-                message.channel.send(Embed);
-                break;
-            }
-            
-            let msgArgs = args.slice(1).join(" ")
-
-            message.channel.send("NEWS: " + "**" + msgArgs + "**").then(sentMessage => {
-                message.delete({ timeout: 5000, reason: 'It had to be done.' });
-            });
 
 
-        break;
+             
+
 
 
 
@@ -113,7 +102,35 @@ client.on('message', message => {
         case "contribute":
             const contribute = new Discord.MessageEmbed()
             .setTitle('Do you want to contribue to Mr.Wiggles?')
-            .setDescription('')
+            .setDescription('How To is on our docs [here](https://docs.mrwiggles.cf/contriblue/what-its-about)')
+            .setColor('7982DA')
+            .setFooter(`Reqested by: ${message.author.tag}`, message.author.displayAvatarURL())
+            .setTimestamp()
+            if(!args[1]){
+                message.channel.send(contribute).then(sentMessage =>{
+                    const channel = client.channels.cache.get('761348067810213908')
+                    channel.send(`${message.author.tag} Ran the command contribute!`)
+                })
+                break;
+
+            }
+
+
+        case "technews":
+            const news = new Discord.MessageEmbed()
+            .setTitle('Form the creators: Techyy News')
+            .setDescription('Techyy News is the **BEST** Place to find news scams, About discord, And more\n\n\n[Click here to visit the website!](https://www.techyynews.cf/home/)')
+            .setColor('7982DA')
+            .setFooter(`Reqested by: ${message.author.tag}`, message.author.displayAvatarURL())
+            .setTimestamp()
+            if(!args[1]){
+                message.channel.send(news).then(sentMessage =>{
+                const channel = client.channels.cache.get('761348067810213908')
+                channel.send(`${message.author.tag} Ran the command news! (teccynews)`)
+                })
+                break;
+            }
+
 
         
 
@@ -139,7 +156,9 @@ client.on('message', message => {
 
             
 
-
+        default:
+            const channel = client.channels.cache.get('761348067810213908')
+            channel.send(`${message.author.tag} Ran the wong command :(`)
                
             
 
