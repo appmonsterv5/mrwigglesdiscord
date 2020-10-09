@@ -174,10 +174,17 @@ client.on('message', message => {
     
 
     
-    
+
 
     
 
+   
+bot.on("ready", () =>{
+    console.log(`Logged in as ${bot.user.tag}!`);
+    bot.user.setActivity("j!help", {
+        type: "LISTENING to mrhelp",
+    });
+});
 
 
     
